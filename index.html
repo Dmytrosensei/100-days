@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дмитро Мелехов — 100 днів 1:1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0e0e0d;
+  --bg2:#161614;
+  --bg3:#1e1e1c;
+  --ink:#ddd8ce;
+  --ink2:#9a958c;
+  --ink3:#5a5752;
+  --ink4:#2e2d2b;
+  --green:#4a7a58;
+  --green2:#7aaa88;
+  --gold:#b8945a;
+  --gold2:#d4b080;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',sans-serif;
+  --line:rgba(221,216,206,.07);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.25rem 2.5rem;
+  background:rgba(14,14,13,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-name{
+  font-family:var(--serif);font-size:1.05rem;font-weight:400;
+  letter-spacing:.02em;color:var(--ink);
+}
+.nav-link{
+  font-size:.75rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(184,148,90,.3);padding:.45rem 1.2rem;
+  text-decoration:none;transition:all .3s;
+}
+.nav-link:hover{background:rgba(184,148,90,.08);border-color:var(--gold)}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:9rem 2rem 6rem;position:relative;overflow:hidden;
+}
+.hero-art{
+  position:absolute;top:50%;right:0;transform:translateY(-50%);
+  width:55vw;max-width:700px;opacity:.35;pointer-events:none;
+}
+.hero-inner{
+  max-width:640px;width:100%;margin:0 auto;position:relative;z-index:2;
+}
+.hero-kicker{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--green2);margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:.75rem;
+  opacity:0;animation:up .8s ease .15s forwards;
+}
+.hero-kicker::before{content:'';display:block;width:28px;height:1px;background:var(--green2)}
+.hero-h1{
+  font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4.4rem);
+  font-weight:300;line-height:1.12;letter-spacing:-.01em;
+  margin-bottom:2rem;
+  opacity:0;animation:up .9s ease .3s forwards;
+}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-lead{
+  font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.35rem);
+  font-weight:300;font-style:italic;
+  color:var(--ink2);line-height:1.75;max-width:500px;
+  margin-bottom:3.5rem;
+  opacity:0;animation:up .9s ease .45s forwards;
+}
+.hero-cta{
+  display:inline-block;background:var(--green);color:#fff;
+  font-family:var(--sans);font-size:.78rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;padding:.95rem 2.25rem;
+  text-decoration:none;transition:background .3s;
+  opacity:0;animation:up .9s ease .6s forwards;
+}
+.hero-cta:hover{background:var(--green2)}
+
+/* PROSE SECTIONS */
+.prose-section{
+  max-width:680px;margin:0 auto;
+  padding:6rem 2rem;
+}
+.prose-section+.prose-section{border-top:1px solid var(--line)}
+
+.prose-kicker{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green2);margin-bottom:2rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.prose-kicker::before{content:'';display:block;width:18px;height:1px;background:var(--green2)}
+
+.prose-h2{
+  font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.6rem);
+  font-weight:300;line-height:1.18;margin-bottom:2rem;
+}
+.prose-h2 em{font-style:italic;color:var(--gold2)}
+
+.prose-body{
+  font-family:var(--serif);font-size:clamp(1rem,1.6vw,1.2rem);
+  font-weight:300;line-height:1.9;color:var(--ink2);
+}
+.prose-body p{margin-bottom:1.4em}
+.prose-body p:last-child{margin-bottom:0}
+.prose-body strong{color:var(--ink);font-weight:400}
+.prose-body em{font-style:italic;color:var(--gold2)}
+
+/* PULL QUOTE */
+.pull{
+  font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.7rem);
+  font-style:italic;color:var(--ink);font-weight:300;line-height:1.55;
+  border-left:2px solid var(--gold);padding:1.5rem 2rem;
+  margin:3rem 0;max-width:560px;
+}
+
+/* DIVIDER ART */
+.divider-art{
+  display:flex;justify-content:center;padding:1rem 0 2rem;opacity:.4;
+}
+
+/* CYCLE VISUAL */
+.cycle-wrap{
+  margin:3rem 0;padding:2.5rem;background:var(--bg2);
+  border:1px solid var(--line);
+}
+.cycle-label{
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:2rem;
+}
+.cycle-nodes{
+  display:flex;flex-wrap:wrap;gap:.2rem 0;align-items:center;
+}
+.cycle-step{
+  display:flex;align-items:center;
+}
+.cnode{
+  font-family:var(--serif);font-size:1.05rem;font-style:italic;
+  color:var(--ink2);padding:.35rem 0;
+}
+.cnode.lit{color:var(--ink)}
+.carrow{color:var(--ink4);padding:0 .6rem;font-size:.75rem}
+.cycle-desc{
+  margin-top:1.5rem;font-size:.88rem;color:var(--ink3);line-height:1.7;
+  font-family:var(--sans);font-weight:300;
+}
+
+/* CONFLICT PAIRS */
+.pairs{display:flex;flex-direction:column;gap:1.25rem;margin:2.5rem 0}
+.pair{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:1.25rem;
+}
+.pside{
+  font-family:var(--serif);font-size:1rem;font-weight:300;
+  padding:1.1rem 1.4rem;border:1px solid var(--line);
+  line-height:1.5;color:var(--ink2);
+  transition:border-color .3s;
+}
+.pside:hover{border-color:var(--ink4)}
+.pside.w{border-color:rgba(122,170,136,.18);color:var(--green2)}
+.pside.f{border-color:rgba(184,148,90,.18);color:var(--gold)}
+.pvs{
+  font-family:var(--serif);font-style:italic;
+  color:var(--ink4);font-size:1rem;text-align:center;white-space:nowrap;
+}
+
+/* METHOD LAYERS */
+.layers{display:flex;flex-direction:column;gap:0;margin:2.5rem 0}
+.layer{
+  display:grid;grid-template-columns:48px 1fr;gap:1.75rem;
+  padding:2rem 0;border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.layer:last-child{border-bottom:none}
+.lnum{
+  font-family:var(--serif);font-size:2rem;font-weight:300;
+  color:var(--ink4);line-height:1;padding-top:.2rem;
+}
+.ltitle{
+  font-family:var(--serif);font-size:1.2rem;font-weight:400;
+  color:var(--ink);margin-bottom:.5rem;line-height:1.3;
+}
+.ldesc{
+  font-size:.88rem;color:var(--ink2);line-height:1.75;font-family:var(--sans);
+}
+
+/* STAGES as JOURNEY */
+.journey{display:flex;flex-direction:column;position:relative;margin:2.5rem 0}
+.journey::before{
+  content:'';position:absolute;left:19px;top:0;bottom:0;
+  width:1px;background:var(--line);
+}
+.jstep{
+  display:grid;grid-template-columns:40px 1fr;gap:2rem;
+  padding:0 0 3rem;position:relative;align-items:start;
+}
+.jdot{
+  width:40px;height:40px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.88rem;color:var(--ink3);
+  background:var(--bg);position:relative;z-index:1;flex-shrink:0;
+}
+.jtitle{
+  font-family:var(--serif);font-size:1.25rem;font-weight:400;
+  color:var(--ink);margin-bottom:.6rem;margin-top:.55rem;line-height:1.3;
+}
+.jbody{font-size:.9rem;color:var(--ink2);line-height:1.75}
+.jtag{
+  display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green2);margin-top:.6rem;
+}
+
+/* DMITRY SECTION */
+.dmitry-section{
+  background:var(--bg2);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.dmitry-inner{
+  max-width:680px;margin:0 auto;padding:6rem 2rem;
+}
+
+/* FINAL CTA */
+.cta-section{
+  max-width:680px;margin:0 auto;padding:6rem 2rem;
+  text-align:center;
+}
+.cta-h{
+  font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);
+  font-weight:300;line-height:1.2;margin-bottom:1.5rem;
+}
+.cta-h em{font-style:italic;color:var(--gold2)}
+.cta-body{
+  font-family:var(--serif);font-size:1.05rem;font-style:italic;
+  color:var(--ink2);max-width:480px;margin:0 auto 3rem;line-height:1.8;
+}
+.cta-meta{
+  display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+.cta-meta-item{font-size:.78rem;color:var(--ink3);letter-spacing:.08em}
+.cta-meta-item span{display:block;color:var(--ink2);margin-top:.2rem;font-size:.92rem;letter-spacing:0}
+.btn-ghost{
+  display:inline-block;border:1px solid rgba(221,216,206,.25);
+  color:var(--ink);font-family:var(--sans);font-size:.78rem;
+  font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  padding:.95rem 2.5rem;text-decoration:none;transition:all .3s;
+}
+.btn-ghost:hover{background:rgba(221,216,206,.05);border-color:var(--ink2)}
+.cta-note{font-size:.75rem;color:var(--ink4);margin-top:1.25rem}
+
+/* FOOTER */
+footer{
+  padding:2rem 2.5rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-name{font-family:var(--serif);font-size:.95rem;color:var(--ink2)}
+.footer-note{font-size:.72rem;color:var(--ink4)}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE — 640px */
+@media(max-width:640px){
+  /* Nav */
+  nav{padding:.9rem 1.25rem}
+  .nav-name{font-size:.9rem}
+  .nav-link{padding:.55rem 1rem;font-size:.7rem;min-height:44px;display:flex;align-items:center}
+
+  /* Hero */
+  .hero{padding:7.5rem 1.25rem 5rem;align-items:flex-start}
+  .hero-art{
+    width:100vw;opacity:.08;
+    top:auto;bottom:-10%;transform:none;
+    right:-20%;
+  }
+  .hero-h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .hero-lead{font-size:1rem;max-width:100%;margin-bottom:2.5rem}
+  .hero-cta{
+    display:block;width:100%;text-align:center;
+    padding:1rem;box-sizing:border-box;
+    font-size:.78rem;min-height:52px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Sections */
+  .prose-section{padding:4rem 1.25rem}
+  .prose-h2{font-size:clamp(1.5rem,7vw,2rem)}
+  .pull{padding:1rem 1.25rem;font-size:clamp(1rem,4.5vw,1.3rem);margin:2rem 0}
+
+  /* Depth SVG — hide on mobile, too small to read */
+  .depth-svg-wrap{display:none}
+
+  /* Cycle */
+  .cycle-wrap{padding:1.5rem 1.25rem}
+  .cycle-nodes{flex-direction:column;align-items:flex-start;gap:0}
+  .cycle-step{flex-direction:row;align-items:center;gap:0}
+  .cnode{font-size:.95rem;padding:.25rem 0}
+  .carrow{padding:.15rem .5rem;font-size:.7rem}
+
+  /* Conflict pairs */
+  .pairs{gap:1rem}
+  .pair{grid-template-columns:1fr;gap:.35rem}
+  .pside{padding:.85rem 1rem;font-size:.92rem}
+  .pvs{text-align:left;padding-left:.25rem;font-size:.85rem;color:var(--ink4)}
+
+  /* Method layers */
+  .layers{margin:2rem 0}
+  .layer{grid-template-columns:32px 1fr;gap:1rem;padding:1.5rem 0}
+  .lnum{font-size:1.5rem}
+  .ltitle{font-size:1.05rem}
+  .ldesc{font-size:.85rem}
+
+  /* Journey */
+  .journey::before{left:17px}
+  .jstep{grid-template-columns:36px 1fr;gap:1.25rem;padding-bottom:2.5rem}
+  .jdot{width:36px;height:36px;font-size:.78rem;flex-shrink:0}
+  .jtitle{font-size:1.1rem;margin-top:.45rem}
+  .jbody{font-size:.85rem}
+
+  /* Dmitry section */
+  .dmitry-inner{padding:4rem 1.25rem}
+  .dmitry-inner .prose-h2{font-size:clamp(1.5rem,7vw,2rem)}
+
+  /* CTA */
+  .cta-section{padding:4rem 1.25rem}
+  .cta-h{font-size:clamp(1.6rem,7vw,2rem)}
+  .cta-body{font-size:.95rem}
+  .cta-meta{gap:1.5rem}
+  .btn-ghost{
+    display:block;width:100%;text-align:center;
+    padding:1rem;min-height:52px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* Footer */
+  footer{flex-direction:column;align-items:flex-start;padding:1.5rem 1.25rem;gap:.5rem}
+}
+
+/* RESPONSIVE — 380px (small phones) */
+@media(max-width:380px){
+  .hero-h1{font-size:2rem}
+  .prose-section{padding:3.5rem 1rem}
+  .cycle-wrap{padding:1.25rem 1rem}
+  .dmitry-inner{padding:3.5rem 1rem}
+  .cta-section{padding:3.5rem 1rem}
+  .layer{grid-template-columns:28px 1fr;gap:.85rem}
+  .jstep{grid-template-columns:32px 1fr;gap:1rem}
+  .jdot{width:32px;height:32px;font-size:.72rem}
+  .journey::before{left:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Дмитро Мелехов</span>
+  <a href="#contact" class="nav-link">Записатись</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- SVG: fragmented circle / self in parts -->
+  <div class="hero-art">
+    <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gcore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#7aaa88" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#7aaa88" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ggold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#d4b080" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#d4b080" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Outer broken ring -->
+      <circle cx="300" cy="300" r="240" stroke="#4a7a58" stroke-width=".8" stroke-dasharray="4 12" opacity=".5"/>
+      <circle cx="300" cy="300" r="200" stroke="#b8945a" stroke-width=".5" stroke-dasharray="2 18" opacity=".35"/>
+      <!-- Fragments — arcs of inner circle breaking apart -->
+      <path d="M300 120 A180 180 0 0 1 452 210" stroke="#4a7a58" stroke-width="1.2" opacity=".7" stroke-linecap="round"/>
+      <path d="M470 340 A180 180 0 0 1 380 464" stroke="#4a7a58" stroke-width="1.2" opacity=".5" stroke-linecap="round"/>
+      <path d="M230 476 A180 180 0 0 1 130 360" stroke="#b8945a" stroke-width="1" opacity=".45" stroke-linecap="round"/>
+      <path d="M128 246 A180 180 0 0 1 218 138" stroke="#b8945a" stroke-width="1" opacity=".35" stroke-linecap="round"/>
+      <!-- Floating fragments -->
+      <circle cx="300" cy="120" r="3" fill="#7aaa88" opacity=".6"/>
+      <circle cx="452" cy="210" r="2" fill="#7aaa88" opacity=".5"/>
+      <circle cx="470" cy="340" r="2.5" fill="#4a7a58" opacity=".4"/>
+      <circle cx="230" cy="476" r="2" fill="#b8945a" opacity=".5"/>
+      <circle cx="128" cy="246" r="3" fill="#b8945a" opacity=".4"/>
+      <circle cx="218" cy="138" r="2" fill="#d4b080" opacity=".35"/>
+      <!-- Detached small arcs -->
+      <path d="M340 92 A180 180 0 0 1 390 110" stroke="#4a7a58" stroke-width=".8" opacity=".3" stroke-linecap="round"/>
+      <path d="M496 280 A180 180 0 0 1 490 320" stroke="#b8945a" stroke-width=".8" opacity=".25" stroke-linecap="round"/>
+      <!-- Inner glow -->
+      <circle cx="300" cy="300" r="80" fill="url(#gcore)" opacity=".25"/>
+      <circle cx="300" cy="300" r="40" fill="url(#ggold)" opacity=".3"/>
+      <!-- Center dot -->
+      <circle cx="300" cy="300" r="4" fill="#ddd8ce" opacity=".7"/>
+      <circle cx="300" cy="300" r="1.5" fill="#fff" opacity=".9"/>
+      <!-- Thin spokes — tension lines -->
+      <line x1="300" y1="300" x2="300" y2="120" stroke="#4a7a58" stroke-width=".4" opacity=".2" stroke-dasharray="2 6"/>
+      <line x1="300" y1="300" x2="452" y2="210" stroke="#4a7a58" stroke-width=".4" opacity=".15" stroke-dasharray="2 6"/>
+      <line x1="300" y1="300" x2="128" y2="246" stroke="#b8945a" stroke-width=".4" opacity=".15" stroke-dasharray="2 6"/>
+      <line x1="300" y1="300" x2="230" y2="476" stroke="#b8945a" stroke-width=".4" opacity=".12" stroke-dasharray="2 6"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-kicker">Психолог · Чоловічий фасилітатор</div>
+    <h1 class="hero-h1">
+      Є момент, коли ти<br>
+      розумієш: живеш<br>
+      <em>нижче того, що в тобі є</em>
+    </h1>
+    <p class="hero-lead">
+      100 днів індивідуальної роботи — щоб побачити свою внутрішню систему,
+      зібрати опору і почати рухатися інакше.
+    </p>
+    <a href="#contact" class="hero-cta">Записатись на діагностику</a>
+  </div>
+</section>
+
+<!-- SECTION 1: Recognition -->
+<div class="prose-section reveal">
+  <div class="prose-kicker">Ти впізнаєш себе</div>
+  <h2 class="prose-h2">Ти досить розумний,<br>щоб бачити <em>розрив</em></h2>
+  <div class="prose-body">
+    <p>Ти бачиш свій потенціал. Можливо, вже давно. І при цьому є щось, що не дає тобі рухатися так, як ти міг би.</p>
+    <p>Зовні — все нормально. Є досвід, компетенції, певний рівень. Але всередині — відчуття, ніби ти постійно живеш з гальмом. Ти починаєш і зупиняєшся. Бачиш наступний крок і відкладаєш. Відчуваєш підйом — і через якийсь час знову повертаєшся в ту саму точку.</p>
+    <p>Ти вже намагався: аналізував, читав, ставив цілі, давав собі обіцянки. Іноді це давало тимчасовий ефект. Але щось продовжує тягнути назад.</p>
+    <p><strong>І де в якийсь момент з'являється думка: справа не в знаннях і не в дисципліні. Щось відбувається глибше.</strong></p>
+  </div>
+</div>
+
+<!-- SECTION 2: The mechanism -->
+<div class="prose-section reveal">
+  <div class="prose-kicker">Механіка зсередини</div>
+  <h2 class="prose-h2">Це не хаос.<br><em>У цього є структура.</em></h2>
+  <div class="prose-body">
+    <p>Самосаботаж рідко виглядає як одна і та сама проблема. У когось — прокрастинація. У когось — тривога і неможливість розслабитися. У когось — страх проявлятися, просити більше, займати своє місце. У когось — потреба бути зручним і хорошим для всіх, крім себе.</p>
+    <p>Але під різними проявами — один і той самий механізм.</p>
+    <p>Людина живе не з цілісного дорослого центру, а з набору адаптивних частин. Одна частина хоче масштабу. Інша боїться оцінки. Одна хоче проявлятися. Інша захищає від провалу. Одна відчуває потенціал. Інша несе сором.</p>
+    <p>Поки ці частини воюють між собою — <strong>величезна кількість енергії йде не на рух і реалізацію, а на утримання внутрішнього конфлікту.</strong></p>
+  </div>
+
+  <!-- Cycle -->
+  <div class="cycle-wrap reveal">
+    <div class="cycle-label">Повторюваний цикл</div>
+    <div class="cycle-nodes">
+      <div class="cycle-step"><div class="cnode lit">Стрес</div><div class="carrow">→</div></div>
+      <div class="cycle-step"><div class="cnode">сором</div><div class="carrow">→</div></div>
+      <div class="cycle-step"><div class="cnode">критик</div><div class="carrow">→</div></div>
+      <div class="cycle-step"><div class="cnode">стоп</div><div class="carrow">→</div></div>
+      <div class="cycle-step"><div class="cnode">фантазія</div><div class="carrow">→</div></div>
+      <div class="cycle-step"><div class="cnode lit">відкат</div></div>
+    </div>
+    <div class="cycle-desc">Перед важливим кроком з'являється напруга. Включається відчуття «я недостатній». Внутрішній критик говорить: «ти не готовий». Людина зупиняється, йде у фантазії про майбутнє — і повертається на старе місце. Щоразу.</div>
+  </div>
+
+  <div class="prose-body">
+    <p>Це не слабкість характеру. Це захисна система, яка колись допомагала не потрапити під сором, оцінку або відкидання. Проблема в тому, що вона продовжує тебе захищати — навіть коли ти вже хочеш жити ширше, сміливіше, помітніше.</p>
+  </div>
+
+  <div class="pull">Поки ти не бачиш, як ця система працює — вона керує тобою.</div>
+
+  <!-- Conflict pairs -->
+  <div class="pairs reveal">
+    <div class="pair">
+      <div class="pside w">Частина, яка хоче масштабу</div>
+      <div class="pvs">↔</div>
+      <div class="pside f">Частина, яка боїться оцінки</div>
+    </div>
+    <div class="pair">
+      <div class="pside w">Частина, яка хоче діяти</div>
+      <div class="pvs">↔</div>
+      <div class="pside f">Частина, яка захищає від провалу</div>
+    </div>
+    <div class="pair">
+      <div class="pside w">Частина, яка відчуває потенціал</div>
+      <div class="pvs">↔</div>
+      <div class="pside f">Частина, яка несе сором</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Approach -->
+<div class="prose-section reveal">
+
+  <!-- SVG: depth layers -->
+  <div class="depth-svg-wrap" style="margin-bottom:3rem;opacity:.5">
+    <svg viewBox="0 0 640 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px">
+      <line x1="0" y1="60" x2="640" y2="60" stroke="#ddd8ce" stroke-width=".4" stroke-dasharray="1 4"/>
+      <circle cx="80" cy="60" r="24" stroke="#4a7a58" stroke-width=".8" opacity=".7"/>
+      <circle cx="80" cy="60" r="14" stroke="#4a7a58" stroke-width=".6" opacity=".5"/>
+      <circle cx="80" cy="60" r="5" fill="#7aaa88" opacity=".6"/>
+      <text x="116" y="56" font-family="'Cormorant Garamond',serif" font-size="11" fill="#9a958c" font-style="italic">поведінка</text>
+      <text x="116" y="70" font-family="'Cormorant Garamond',serif" font-size="10" fill="#5a5752">симптом</text>
+      <circle cx="300" cy="60" r="30" stroke="#b8945a" stroke-width=".8" opacity=".6"/>
+      <circle cx="300" cy="60" r="18" stroke="#b8945a" stroke-width=".6" opacity=".4"/>
+      <circle cx="300" cy="60" r="7" fill="#d4b080" opacity=".5"/>
+      <text x="342" y="56" font-family="'Cormorant Garamond',serif" font-size="11" fill="#9a958c" font-style="italic">частини</text>
+      <text x="342" y="70" font-family="'Cormorant Garamond',serif" font-size="10" fill="#5a5752">механізм</text>
+      <circle cx="540" cy="60" r="38" stroke="#ddd8ce" stroke-width=".8" opacity=".3"/>
+      <circle cx="540" cy="60" r="24" stroke="#ddd8ce" stroke-width=".6" opacity=".25"/>
+      <circle cx="540" cy="60" r="10" fill="#ddd8ce" opacity=".2"/>
+      <circle cx="540" cy="60" r="3" fill="#fff" opacity=".5"/>
+      <text x="0" y="100" font-family="'Cormorant Garamond',serif" font-size="10" fill="#2e2d2b">поверхня</text>
+      <text x="268" y="100" font-family="'Cormorant Garamond',serif" font-size="10" fill="#2e2d2b">глибина</text>
+      <text x="510" y="100" font-family="'Cormorant Garamond',serif" font-size="10" fill="#2e2d2b">центр</text>
+    </svg>
+  </div>
+
+  <div class="prose-kicker">Як я працюю</div>
+  <h2 class="prose-h2">Я не ломаю.<br>Я <em>дивлюся глибше</em>.</h2>
+  <div class="prose-body">
+    <p>Коли людина приходить до мене, я не починаю з порад і стратегій. Спочатку я намагаюся зрозуміти, яка внутрішня система стоїть за тим, що вона описує.</p>
+    <p>За прокрастинацією я часто бачу страх видимості. За тривогою — систему контролю, яка давно перевтомилася. За бажанням масштабу — внутрішній конфлікт між силою і страхом втратити приналежність. За грошовим блоком — питання права хотіти, брати і займати місце.</p>
+    <p>Моя робота — не «зламати» захисні реакції. А зрозуміти їхню логіку. Частина, яка зупиняє тебе — не ворог. Вона колись виникла з конкретної причини і виконує конкретну функцію. Коли ти це бачиш — з'являється можливість вибору.</p>
+  </div>
+
+  <div class="layers reveal">
+    <div class="layer">
+      <div class="lnum">I</div>
+      <div>
+        <div class="ltitle">Діагностика внутрішньої системи</div>
+        <div class="ldesc">Спочатку — карта. Хаос стає структурою. Ти бачиш, де втікає енергія, які частини конфліктують, які сценарії повторюються і чому. Це дає полегшення вже на старті — бо з'являється ясність там, де раніше був туман.</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lnum">II</div>
+      <div>
+        <div class="ltitle">Робота з частинами</div>
+        <div class="ldesc">IFS-підхід дозволяє побачити кожну внутрішню частину не як поломку, а як голос з функцією. Ми розбираємо, звідки ця частина з'явилася, від чого захищає і що їй насправді потрібно. Ти перестаєш воювати з собою — і починаєш краще себе розуміти.</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lnum">III</div>
+      <div>
+        <div class="ltitle">Тіло і саморегуляція</div>
+        <div class="ldesc">Я працюю не лише через розмову. В роботі завжди є тілесні відчуття, образи, метафори, ритуали, практики повернення до себе. Це важливо — бо розуміння без тілесного досвіду часто залишається в голові і не змінює поведінку.</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lnum">IV</div>
+      <div>
+        <div class="ltitle">Дорослішання і перехід</div>
+        <div class="ldesc">Повторювана лінія в моїй роботі — людина повинна не просто зрозуміти себе, а перейти в нову позицію. З адаптивних стратегій виживання — в зрілу здатність вибирати, видержувати, проявлятися і діяти з власної правди.</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="lnum">V</div>
+      <div>
+        <div class="ltitle">Інтеграція в реальне життя</div>
+        <div class="ldesc">Кожна сесія має вихід у конкретність: спостереження, дія, розмова, рішення, ритуал, новий стандарт. Ціль — не бесконечна рефлексія. Ціль — щоб ти починав інакше жити, вибирати, діяти і виносити себе.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: The Journey -->
+<div class="prose-section reveal">
+  <div class="prose-kicker">100 днів — як це влаштовано</div>
+  <h2 class="prose-h2">Не курс.<br><em>Шлях.</em></h2>
+  <div class="prose-body">
+    <p>100 днів — це не набір уроків і не розклад зустрічей. Це контейнер переходу. Достатньо часу, щоб побачити паттерн, пройти через опір, сформувати нову опору і закріпити її в діях.</p>
+    <p>14 індивідуальних зустрічей. Між ними — домашня робота, практики і власне спостереження. Ми рухаємося поетапно, але гнучко — тому що кожна людина має свою систему.</p>
+  </div>
+
+  <div class="journey reveal">
+    <div class="jstep">
+      <div class="jdot">01</div>
+      <div>
+        <div class="jtitle">Діагностика і карта</div>
+        <div class="jbody">Збираємо точку А. Що зараз відбувається, де застряг, як виглядає внутрішня система. Ти отримуєш карту — не загальну, а конкретно твою: які частини діють, де починається стоп, де втікає енергія. Формуємо гіпотезу на 100 днів.</div>
+        <span class="jtag">Хаос стає картою</span>
+      </div>
+    </div>
+    <div class="jstep">
+      <div class="jdot">02</div>
+      <div>
+        <div class="jtitle">Робота з тим, що блокує</div>
+        <div class="jbody">Заходимо в основні вузли: страх видимості, сором, внутрішній критик, заборона на силу або гроші, звичка бути зручним, уникання напруги. Ми не ломаємо ці частини — ми розбираємо, звідки вони взялися і як повернути управління дорослій позиції.</div>
+        <span class="jtag">Ти розумієш, що тебе зупиняє</span>
+      </div>
+    </div>
+    <div class="jstep">
+      <div class="jdot">03</div>
+      <div>
+        <div class="jtitle">Збірка внутрішньої опори</div>
+        <div class="jbody">Практики, образи, тілесні якорі, ритуали, символи. Опора — це не красива ідея. Це стан, до якого ти можеш повертатися в реальному житті: в момент тривоги, тиску, спокуси зникнути або зливу. Ти вчишся залишатися з собою.</div>
+        <span class="jtag">Ти знаходиш центр</span>
+      </div>
+    </div>
+    <div class="jstep">
+      <div class="jdot">04</div>
+      <div>
+        <div class="jtitle">Стабілізація дії</div>
+        <div class="jbody">Інсайти стають конкретними кроками. Ми переводимо внутрішні зміни в реальність: гроші, проекти, розмови, рішення, проявленість. Відкати коротшають. З'являється нова ідентичність: людина, яка може виносити напругу і рухатися.</div>
+        <span class="jtag">Рух без постійної внутрішньої боротьби</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: About Dmitry -->
+<div class="dmitry-section">
+  <div class="dmitry-inner">
+
+    <!-- SVG: tree/roots symbol -->
+    <div style="margin-bottom:3rem;opacity:.4;max-width:200px">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="100" y1="100" x2="100" y2="30" stroke="#7aaa88" stroke-width="1"/>
+        <line x1="100" y1="55" x2="65" y2="32" stroke="#7aaa88" stroke-width=".7" opacity=".7"/>
+        <line x1="100" y1="45" x2="132" y2="26" stroke="#7aaa88" stroke-width=".7" opacity=".6"/>
+        <line x1="100" y1="68" x2="54" y2="58" stroke="#7aaa88" stroke-width=".6" opacity=".5"/>
+        <line x1="100" y1="60" x2="148" y2="48" stroke="#7aaa88" stroke-width=".6" opacity=".45"/>
+        <line x1="100" y1="100" x2="100" y2="175" stroke="#b8945a" stroke-width="1"/>
+        <line x1="100" y1="120" x2="72" y2="148" stroke="#b8945a" stroke-width=".7" opacity=".7"/>
+        <line x1="100" y1="130" x2="130" y2="160" stroke="#b8945a" stroke-width=".7" opacity=".65"/>
+        <line x1="100" y1="145" x2="60" y2="175" stroke="#b8945a" stroke-width=".6" opacity=".5"/>
+        <line x1="100" y1="150" x2="142" y2="178" stroke="#b8945a" stroke-width=".6" opacity=".45"/>
+        <line x1="100" y1="138" x2="52" y2="135" stroke="#b8945a" stroke-width=".5" opacity=".35"/>
+        <line x1="100" y1="125" x2="150" y2="118" stroke="#b8945a" stroke-width=".5" opacity=".3"/>
+        <circle cx="100" cy="100" r="5" fill="#ddd8ce" opacity=".6"/>
+        <circle cx="100" cy="100" r="2" fill="#fff" opacity=".8"/>
+      </svg>
+    </div>
+
+    <div class="prose-kicker">Хто я</div>
+    <h2 class="prose-h2" style="margin-bottom:2rem">Я психолог.<br>Але моя робота —<br><em>на межі декількох світів.</em></h2>
+    <div class="prose-body">
+      <p>Я працюю з людьми на перетині психотерапії, роботи з частинами особистості, тілесних практик, чоловічої ініціації та системного мислення. Моя спеціалізація — глибинні переходи: від внутрішньої розщепленості, сорому і самосаботажу до зрілості, цілісності і власного шляху.</p>
+      <p>Мене цікавить не симптом, а структура, яка його створює. Не «що ти робиш», а «чому твоя психіка це робить». Коли ти бачиш логіку своєї системи — з'являється реальний вибір.</p>
+      <p>Я працюю з чоловіками — підприємцями, керівниками, фахівцями — які зовні вже досягли певного рівня, але всередині відчувають розрив між тим, ким вони є, і тим, ким могли б бути.</p>
+      <p><strong>Я не веду за собою в залежність. Я допомагаю тобі повернути собі себе.</strong></p>
+
+      <div class="pull" style="margin-top:2.5rem">
+        Ця робота — не для тих, хто хоче швидкий рецепт. Вона — для тих, хто готовий чесно подивитися на те, що насправді його зупиняє.
+      </div>
+
+      <p style="margin-top:2rem">Якщо ти вже пробував аналізувати, тиснути на себе дисципліною, давати обіцянки «з понеділка» — і знаєш, що це дає тимчасовий ефект — можливо, настав час зайти глибше.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: Not for everyone -->
+<div class="prose-section reveal">
+  <div class="prose-kicker">Чесно</div>
+  <h2 class="prose-h2">Ця робота<br><em>не для всіх</em></h2>
+  <div class="prose-body">
+    <p>Вона не підійде, якщо ти шукаєш швидке рішення без внутрішньої роботи. Або хочеш, щоб тобі просто сказали, що робити. Або потрібен мотиваційний поштовх, а не системний розбір.</p>
+    <p>Ця робота вимагає готовності дивитися на те, що болить — на свої захисти, страхи, тінь, злість, сором і реальні бажання. Вона вимагає чесності й регулярності протягом 100 днів.</p>
+    <p><strong>Вона підходить тобі, якщо ти вже розумієш: наступний рівень потребує не просто нової стратегії — а іншої внутрішньої опори.</strong></p>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="cta-section reveal" id="contact">
+
+  <!-- SVG: threshold / doorway symbol -->
+  <div style="margin:0 auto 3rem;opacity:.35;width:80px">
+    <svg viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="60" height="85" stroke="#ddd8ce" stroke-width=".8" opacity=".6"/>
+      <rect x="20" y="20" width="40" height="75" stroke="#ddd8ce" stroke-width=".4" opacity=".3"/>
+      <line x1="40" y1="10" x2="40" y2="95" stroke="#b8945a" stroke-width=".6" opacity=".5"/>
+      <circle cx="40" cy="10" r="3" fill="#d4b080" opacity=".6"/>
+      <circle cx="40" cy="95" r="2" fill="#7aaa88" opacity=".5"/>
+    </svg>
+  </div>
+
+  <h2 class="cta-h">Почни з<br><em>діагностики</em></h2>
+  <p class="cta-body">
+    Перша зустріч — не продаж. Це 60 хвилин, де ти розповідаєш свою ситуацію,
+    я задаю питання. Разом збираємо карту того, що відбувається.
+    Після — ти сам вирішуєш, чи є сенс іти далі.
+  </p>
+
+  <div class="cta-meta">
+    <div class="cta-meta-item">
+      Формат
+      <span>онлайн, відео</span>
+    </div>
+    <div class="cta-meta-item">
+      Тривалість
+      <span>60 хвилин</span>
+    </div>
+    <div class="cta-meta-item">
+      100 днів
+      <span>14 зустрічей · €980</span>
+    </div>
+  </div>
+
+  <a href="https://t.me/dmytromelekhov" class="btn-ghost" target="_blank">
+    Написати в Telegram →
+  </a>
+  <p class="cta-note">Відповідаю особисто</p>
+</section>
+
+<footer>
+  <div class="footer-name">Дмитро Мелехов</div>
+  <div class="footer-note">Психолог · Чоловічий фасилітатор · 2026</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{
+  e.forEach(el=>{
+    if(el.isIntersecting){el.target.classList.add('on');obs.unobserve(el.target)}
+  })
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
